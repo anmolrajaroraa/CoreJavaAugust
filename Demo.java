@@ -1,5 +1,9 @@
 class Demo{
 	// whenever we recieve args from cmd, they are always in the form of text
+	// String args[]
+	// String []arr
+	// String[] arguments
+	// String ...x -> varargs -> variable arguments
 	public static void main(String args[]){  // void is the return type
 		Z.someOtherFn();
 		PrintStream out = new PrintStream();
