@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class StringDemo {
@@ -75,5 +76,13 @@ public class StringDemo {
 //		"hello" -> {'h', 'e', 'l', 'l', 'o'}
 		s4.toUpperCase();
 		s4.toLowerCase();
+		
+		System.out.println("[" + (int)Character.MIN_VALUE + "]");
+		System.out.println("[" + (int)Character.MAX_VALUE + "]");
+		
+//		long a = (long)12345678912345678999l;
+		BigInteger bi = new BigInteger("12345678912345678");
+		byte a = bi.byteValue();
+		System.out.println(a);
 	}
 }
