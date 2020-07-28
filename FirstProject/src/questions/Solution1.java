@@ -1,6 +1,7 @@
 package questions;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Solution1 {
 
@@ -40,36 +41,87 @@ public class Solution1 {
 		}
 	}*/
 	
+//	public static void main(String[] args) {
+//		String s = "qklqnknqnldckn";
+//		
+//		int arr[] = new int[26];
+//		boolean isNonDuplicateFound = false;
+//		
+//		for(int i = 0; i < s.length(); i++) {
+//			char c = s.charAt(i);
+//			int asciiCode = c;
+//			int index = asciiCode - 'a';
+//			arr[index]++;
+//		}
+//		
+//		for(int i = 0; i < s.length(); i++) {
+//			char c = s.charAt(i);
+//			int asciiCode = c;
+//			int index = asciiCode - 'a';
+//			int value = arr[index];
+//			if(value == 1) {
+//				System.out.println(c);
+//				isNonDuplicateFound = true;
+//				break;
+//			}
+//		}
+//		
+//		if(!isNonDuplicateFound) {
+//			System.out.println("_");
+//		}
+//		
+//		System.out.println(Arrays.toString(arr));
+//	}
+	
+//	public static void main(String[] args) {
+//		String s = "qklqnknqnldckn";
+//		boolean isNonDuplicateFound = false;
+//		for(int i = 0; i < s.length(); i++) {
+////			char c = s.charAt(i);
+////			int firstIndex = s.indexOf(c);
+////			int lastIndex = s.lastIndexOf(c);
+////			if(firstIndex == lastIndex) {
+//			if(s.indexOf(s.charAt(i)) == s.lastIndexOf(s.charAt(i))) {
+//				System.out.println(s.charAt(i));
+//				isNonDuplicateFound = true;
+//				break;
+//			}
+//		}
+//		if(!isNonDuplicateFound) {
+//			System.out.println("_");
+//		}
+//	}
+	
 	public static void main(String[] args) {
 		String s = "qklqnknqnldckn";
-		
-		int arr[] = new int[26];
 		boolean isNonDuplicateFound = false;
-		
+		HashMap<Character, Integer> dictionary = new HashMap<>();
 		for(int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			int asciiCode = c;
-			int index = asciiCode - 'a';
-			arr[index]++;
+			if(dictionary.containsKey(c)) {
+				
+				int initialValue = dictionary.get(c);
+				int newValue = initialValue + 1;
+				dictionary.put(c, newValue);
+				
+			}
+			else {
+				dictionary.put(c, 1);
+			}
 		}
-		
+		System.out.println(dictionary);
 		for(int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			int asciiCode = c;
-			int index = asciiCode - 'a';
-			int value = arr[index];
-			if(value == 1) {
+			int characterSeenTimes = dictionary.get(c);
+			if(characterSeenTimes == 1) {
 				System.out.println(c);
 				isNonDuplicateFound = true;
 				break;
 			}
 		}
-		
 		if(!isNonDuplicateFound) {
 			System.out.println("_");
 		}
-		
-		System.out.println(Arrays.toString(arr));
 	}
 
 }
