@@ -1,6 +1,5 @@
 package questions;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Solution1 {
@@ -10,6 +9,8 @@ public class Solution1 {
 //		String s = "aaabbcccdeeef"; // -> d
 //		String s = "aaabbcccddeeef"; // -> f
 //		String s = "aaabbcccddeeeff"; // -> _
+ * 
+ *      rftghyujhjh
 		
 		boolean isNonDuplicateFound = true;
 		
