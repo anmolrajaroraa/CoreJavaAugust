@@ -13,9 +13,9 @@ public class TypePromotion {
 //		System.out.println("Integer");
 //	}
 
-//	static void testTypePromotion(int ...x) {
-//		System.out.println("...");
-//	}
+	static void testTypePromotion(int ...x) {
+		System.out.println("...");
+	}
 
 //	static void testTypePromotion(long x) {
 //		System.out.println("long");
@@ -30,12 +30,14 @@ public class TypePromotion {
 	}
 
 	public static void main(String[] args) {
-		testTypePromotion((byte)100);
+		testTypePromotion(100);
 		
 		// Type Promotion
 		// 0. Default - int (primitive)
 		// 1. widening - bigger data type - primitive
 		// 2. Wrapper class
+		// 3. varargs
+		// 4. won't go towards byte or short
 	}
 
 }
