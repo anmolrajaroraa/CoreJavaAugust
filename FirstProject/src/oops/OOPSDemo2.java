@@ -1,15 +1,16 @@
 package oops;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 class Student2{
 	private short id; 
 	private String name; 
 	private String courseName; 
 	private byte courseDuration;  
+	private Address address;
 	private ArrayList<Subject> subjects = new ArrayList<>();
 	static final String COLLEGE_NAME = "XYZ College";
+	
 //	private HashMap<String, Integer> marksObtained = new HashMap<>();
 	
 	// Default constructor
@@ -70,10 +71,18 @@ class Student2{
 		this.subjects = subjects;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
 		return "Student2 [id=" + id + ", name=" + name + ", courseName=" + courseName + ", courseDuration="
-				+ courseDuration + ", subjects=" + subjects + ", collegeName= " + COLLEGE_NAME + "]";
+				+ courseDuration + ", subjects=" + subjects + ", collegeName= " + COLLEGE_NAME + 
+				", address=" + address + "]";
 	}
 }
 
@@ -83,18 +92,19 @@ public class OOPSDemo2 {
 		Student2 student = new Student2(101, "XAE A-12", 4, "BTech");
 //		student.id = 102;
 //		student.name = "Ramu";
-		student.setName("");
+		student.setName(null);
 		
-		Subject subject = new Subject("English", "Paromita", 304);
-		student.getSubjects().add(subject);
-		subject = new Subject("Physics", "SurajPal", 103);
-		student.getSubjects().add(subject);
-		subject = new Subject("Chemistry", "Vandana", 1);
-		student.getSubjects().add(subject);
-		subject = new Subject("CS", "Shalu", 2);
-		subject.setPracticalMarks((byte) 24);
-		student.getSubjects().add(subject);
-		subject = new Subject("Maths", " Manoj", 101);
+		Address studentAddress = new Address(1, "New City", "New Delhi", 110085, "Near mall");
+		student.setAddress(studentAddress);
+		
+		ArrayList<String> courses = new ArrayList<>();
+		courses.add("Maths");
+		courses.add("Accountancy");
+		courses.add("CPP");
+		
+		Teacher teacher = new Teacher(007, "Manoj", courses);
+		
+		Subject subject = new Subject("Accountancy", teacher, 101);
 		student.getSubjects().add(subject);
 		
 //		student.marksObtained = new byte[] {100,100,100,100,100};

@@ -2,22 +2,22 @@ package oops;
 
 public class Subject {
 	private String name;
-	private String teacherName;
+	private Teacher teacher;
 	private short roomNo;
 	private byte theoryMarks;
 	private byte vivaMarks;
 	private byte practicalMarks;
 	private byte totalMarks;
 	
-	public Subject(String name, String teacherName, int roomNo) {
+	public Subject(String name, Teacher teacher, int roomNo) {
 		this.name = name;
-		this.teacherName = teacherName;
+		this.teacher = teacher;
 		this.roomNo = (short) roomNo;
 	}
 
 	@Override
 	public String toString() {
-		return "Subject [name=" + name + ", teacherName=" + teacherName + ", roomNo=" + roomNo + ", theoryMarks="
+		return "Subject [name=" + name + ", teacherName=" + teacher + ", roomNo=" + roomNo + ", theoryMarks="
 				+ theoryMarks + ", vivaMarks=" + vivaMarks + ", practicalMarks=" + practicalMarks + ", totalMarks="
 				+ totalMarks + "]";
 	}
@@ -29,11 +29,11 @@ public class Subject {
 		this.name = name;
 	}
 
-	public String getTeacherName() {
-		return teacherName;
+	public Teacher getTeacher() {
+		return teacher;
 	}
-	public void setTeacherName(String teacherName) {
-		this.teacherName = teacherName;
+	public void setTeacher(Teacher teacherName) {
+		this.teacher = teacherName;
 	}
 
 	public short getRoomNo() {

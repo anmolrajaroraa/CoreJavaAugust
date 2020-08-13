@@ -3,7 +3,7 @@ package oops;
 import java.util.Arrays;
 
 class Student{
-	short id; // 2
+	short id = 0; // 2
 	String name; // 30
 	String courseName; // 50
 	byte courseDuration; // 1
