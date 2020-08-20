@@ -5,6 +5,7 @@ abstract class Account extends Object{
 	String customerName;
 	int balance;
 	String bankName;
+	final static int MIN_BALANCE_REQUIRED = 1000;
 	
 	private Account() {  // father
 		bankName = "XYZ Bank";
@@ -26,6 +27,10 @@ abstract class Account extends Object{
 		System.out.println("Account withdraw");
 	}
 	abstract void roi();
+	
+	final void KYC() {
+		System.out.println("Know your customer...");
+	}
 }
 
 class SavingsAccount extends Account{
@@ -90,6 +95,12 @@ public class InheritanceTest2 {
 		// abstract class - no object creation
 		// you can build abstract methods
 		
+		// why final? - we dont want anyone to inherit and modify our class
+		// as we have provided everything that is needed in a class
+		// why abstract?
+		// final vs abstract
+		// final abstract can be used together?
+		
 //		Account account = new Account(104, "Jenny", 20000);
 //		account.withdraw();
 		
@@ -98,6 +109,7 @@ public class InheritanceTest2 {
 		sa.withdraw();
 		sa.deposit();
 		sa.roi();
+		sa.KYC();
 		
 		CurrentAccount ca = new CurrentAccount(111, "Tom", 35000);
 		ca.deposit();
