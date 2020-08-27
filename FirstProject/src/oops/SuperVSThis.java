@@ -51,7 +51,7 @@ class A3 extends A2{
 		this();
 		this.x = x;
 		System.out.println("A3 param cons");
-		System.out.println(x + this.x + super.x + super.getX() + y); 
+		System.out.println(x + this.x + super.x + ((A1)this).x + y); 
 		// 600 + 600 + 500 + 200 + 400 = 2300
 	}
 	@Override
