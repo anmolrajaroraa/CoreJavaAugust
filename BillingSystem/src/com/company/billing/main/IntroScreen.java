@@ -75,6 +75,7 @@ public class IntroScreen extends JFrame {
 					this.dispose();
 					Login login = new Login();
 					login.setVisible(true);
+					login.requestFocusInWindow();
 				}
 			});
 		timer.start();

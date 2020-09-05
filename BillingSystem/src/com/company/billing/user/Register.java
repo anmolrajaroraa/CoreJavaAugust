@@ -1,38 +1,40 @@
 package com.company.billing.user;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JCheckBox;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
-public class Login extends JFrame {
+public class Register extends JFrame {
 
-	private static final long serialVersionUID = 6706224596870863180L;
+	private static final long serialVersionUID = -8756556934627010744L;
 	private JPanel contentPane;
 	private JTextField txtEmailID;
 	private JPasswordField passwordField;
 
 	public static void main(String[] args) {
-		Login frame = new Login();
+		Register frame = new Register();
 		frame.setVisible(true);
 		frame.requestFocusInWindow();
 	}
-	
-	public Login() {
-		setTitle("Login");
+
+	public Register() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Register");
+		setResizable(false);
 		setBounds(100, 100, 450, 300);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
@@ -40,7 +42,7 @@ public class Login extends JFrame {
 		contentPane.setBackground(Color.BLACK);
 		setContentPane(contentPane);
 		
-		JLabel lblLogin = new JLabel("Login");
+		JLabel lblLogin = new JLabel("Register");
 		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLogin.setForeground(Color.CYAN);
 		lblLogin.setFont(new Font("Kokonor", Font.BOLD, 24));
@@ -166,4 +168,5 @@ public class Login extends JFrame {
 		btnRegister.setBounds(304, 206, 117, 29);
 		contentPane.add(btnRegister);
 	}
+
 }
