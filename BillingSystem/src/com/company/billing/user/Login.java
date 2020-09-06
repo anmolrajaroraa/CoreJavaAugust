@@ -160,7 +160,9 @@ public class Login extends JFrame {
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Register register = new Register();
+				register.setVisible(true);
+				register.requestFocusInWindow();
 			}
 		});
 		btnRegister.setBounds(304, 206, 117, 29);
