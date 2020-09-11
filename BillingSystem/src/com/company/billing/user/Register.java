@@ -6,11 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -30,6 +32,34 @@ public class Register extends JFrame {
 		String name = txtName.getText();
 		String email = txtEmailID.getText();
 		String password = String.valueOf(passwordField.getPassword());
+		
+		if(name.equals("Enter name here") || email.equals("Enter email ID here") || 
+				password.equals("Enter password here")) {
+			JOptionPane.showMessageDialog(this, "Please fill in details correctly");
+			return;
+		}
+		
+		UserDAO userDAO = new UserDAO();
+		try {
+			
+			if(userDAO.isUserExists(email)) {
+				JOptionPane.showMessageDialog(this, "User already exists");
+				return;
+			}
+			
+			boolean isAdded = userDAO.register(name, email, password);
+			if(isAdded) {
+				this.dispose();
+				Login login = new Login();
+				login.setVisible(true);
+				login.requestFocusInWindow();
+				JOptionPane.showMessageDialog(this, "Registration Successful");
+			}
+			
+		}
+		catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {

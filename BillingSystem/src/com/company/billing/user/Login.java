@@ -3,13 +3,19 @@ package com.company.billing.user;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.SQLException;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import com.company.billing.main.Dashboard;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
@@ -23,6 +29,26 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtEmailID;
 	private JPasswordField passwordField;
+	
+	private void loginCheck() {
+		String message =  "Invalid email or password";
+		String email = txtEmailID.getText();
+		String password = new String(passwordField.getPassword());
+		UserDAO userDAO = new UserDAO();
+		try {
+			String name = userDAO.loginCheck(email, password);
+			if(name != null) {
+				message = "Welcome " + name;
+				this.dispose();
+				Dashboard dashboard = new Dashboard(message);
+				dashboard.setVisible(true);
+			}
+			JOptionPane.showMessageDialog(this, message);
+		}
+		catch(ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) {
 		Login frame = new Login();
@@ -137,7 +163,7 @@ public class Login extends JFrame {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				loginCheck();
 			}
 		});
 		btnLogin.setBounds(175, 206, 117, 29);
