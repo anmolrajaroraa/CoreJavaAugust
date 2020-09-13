@@ -3,6 +3,9 @@ package com.company.billing.main;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -10,10 +13,14 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
 
+import com.company.billing.model.Product;
+import com.company.billing.model.ProductDAO;
 import com.company.billing.utils.ConfigReader;
+import com.company.billing.utils.ExcelReader;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class Dashboard extends JFrame implements ConfigReader {
 
@@ -70,6 +77,15 @@ public class Dashboard extends JFrame implements ConfigReader {
 		JFileChooser browse = new JFileChooser(CONFIG_BUNDLE.getString(BROWSE_PATH));
 		browse.showOpenDialog(this);
 		File file = browse.getSelectedFile();
+		System.out.println(file.getPath());
+		try {
+			ArrayList<Product> productsList = ExcelReader.readXLS(file);
+			String msg = ProductDAO.bulkUpload(productsList) ? "Products uploaded:)" : "Products not uploaded:(";
+			JOptionPane.showMessageDialog(this, msg);
+		} 
+		catch (IOException | ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 }
